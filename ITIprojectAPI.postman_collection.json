@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "a24533fa-a9d0-47cd-9b5d-52e145bc0cbb",
+		"name": "ITIprojectAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30422491",
+		"_collection_link": "https://www.postman.com/planetary-star-518702/workspace/iti-api-project/collection/30422491-a24533fa-a9d0-47cd-9b5d-52e145bc0cbb?action=share&source=collection_link&creator=30422491"
+	},
+	"item": [
+		{
+			"name": "Retrieving data",
+			"item": [
+				{
+					"name": "Get all students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql('20');\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Fname).to.eql(\"Alda\");\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Lname).to.eql(\"Mahmoud\");\r",
+									"    //test to be fail\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									";"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/20",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adding new student",
+			"item": [
+				{
+					"name": "Add new student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Fname).to.eql(\"Mahmoud\");\r",
+									"})\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql('73');\r",
+									"});\r",
+									"    ;\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Fname\": \"Mahmoud\",\r\n  \"Lname\": \"Kotb\",\r\n  \"gender\": \"Male\",\r\n  \"id\": \"61\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check added student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Fname).to.eql(\"Mahmoud\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/63",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"63"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Updating a particular student",
+			"item": [
+				{
+					"name": "edit student 30",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Fname).to.eql(\"Mohamed\");\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Lname).to.eql(\"Davis\");\r",
+									"    //test to be FAIL\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql('30');\r",
+									"})\r",
+									"    ;\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Fname\": \"Mohamed\",\r\n  \"Lname\": \"Ahmed\",\r\n  \"gender\": \"Male\",\r\n  \"id\": \"2\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/30",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view student to be updated",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/30",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deleting a particular student",
+			"item": [
+				{
+					"name": "delete student 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/20",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get deleted student 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql('20');\r",
+									"    //expected to be FAIL\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://6557ec35bd4bcef8b6134053.mockapi.io/Students/10",
+							"protocol": "https",
+							"host": [
+								"6557ec35bd4bcef8b6134053",
+								"mockapi",
+								"io"
+							],
+							"path": [
+								"Students",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
